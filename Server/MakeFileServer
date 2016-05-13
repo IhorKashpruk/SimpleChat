@@ -1,0 +1,17 @@
+CC=g++
+CFLAGS= -O2 -c -Wall -Wextra -pedantic -Weffc++ -Wconversion -Wsign-conversion -Wunreachable-code -std=c++11
+LDFLAGS=
+SOURCES=ServerRun.cpp TCPSocket.cpp Oerror.cpp Customer.cpp Server.cpp SignalManager.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=ServerRun
+
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -rf *.o
